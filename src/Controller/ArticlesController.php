@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Log\Log;
 
 /**
  * Articles Controller
@@ -11,7 +10,6 @@ use Cake\Log\Log;
  */
 class ArticlesController extends AppController
 {
-
     public function initialize()
     {
         $loginUser = $this->request->session()->read('loginUser');
@@ -21,7 +19,7 @@ class ArticlesController extends AppController
             return $this->redirect(['action' => '../Error/index']);
         }
     }
-    
+ 
     /**
      * Index method
      *
@@ -58,15 +56,16 @@ class ArticlesController extends AppController
     {
         $article = $this->Articles->newEntity();
         if ($this->request->is('post')) {
-            Log::write('debug', $this->request->data);
             $article = $this->Articles->patchEntity($article, $this->request->data);
-            Log::write('debug', '$article'.$article);
             if ($this->Articles->save($article)) {
+                $this->Flash->success(__('The article has been saved.'));
+                return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The article could not be saved. Please, try again.'));
             }
-            return $this->redirect(['action' => 'index']);
         }
+        $this->set(compact('article'));
+        $this->set('_serialize', ['article']);
     }
 
     /**
@@ -111,5 +110,5 @@ class ArticlesController extends AppController
             $this->Flash->error(__('The article could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
-    }   
+    }
 }

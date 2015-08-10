@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Log\Log;
 
 /**
  * Users Controller
@@ -20,7 +19,6 @@ class UsersController extends AppController
             return $this->redirect(['action' => '../Error/index']);
         }
     }
-
     /**
      * Index method
      *
