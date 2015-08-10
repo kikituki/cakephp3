@@ -11,7 +11,6 @@
             <th><?= $this->Paginator->sort('id') ?></th>
             <th><?= $this->Paginator->sort('title') ?></th>
             <th><?= $this->Paginator->sort('body') ?></th>
-            <th><?= $this->Paginator->sort('create') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
@@ -19,10 +18,9 @@
     <?php foreach ($articles as $article): ?>
         <tr>
             <td><?= $this->Number->format($article->id) ?></td>
-            <td><?= $article->title ?></td>
-            <td><?= $article->body ?></td>
-            <td><?= h($article->create) ?></td>
-s            <td class="actions">
+            <td><?= h($article->title) ?></td>
+            <td><?= h($article->body) ?></td>
+            <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $article->id]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $article->id]) ?>
                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $article->id], ['confirm' => __('Are you sure you want to delete # {0}?', $article->id)]) ?>
