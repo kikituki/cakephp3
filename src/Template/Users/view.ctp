@@ -21,8 +21,8 @@
             <p><?= $this->Number->format($user->id) ?></p>
         </div>
         <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('Created') ?></h6>
-            <p><?= h($user->created) ?></p>
+            <h6 class="subheader"><?= __('Create') ?></h6>
+            <p><?= h($user->create) ?></p>
         </div>
     </div>
 </div>
