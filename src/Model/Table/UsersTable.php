@@ -27,7 +27,6 @@ class UsersTable extends Table
         $this->table('users');
         $this->displayField('name');
         $this->primaryKey('id');
-        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -43,20 +42,16 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
-            ->allowEmpty('password');
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
+
+        $validator
+            ->allowEmpty('create');
 
         return $validator;
-    }
-    
-    
-    public function isAuth(String $userId,String $pass) {
-    
-        $users = TableRegistry::get('Users');
-        $sql = $users->connection()->query("select * from users where userId='" + $userId + "' and password='" + $pass + "'") ;
-    
-        return true;
     }
 }

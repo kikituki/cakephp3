@@ -27,7 +27,6 @@ class ArticlesTable extends Table
         $this->table('articles');
         $this->displayField('title');
         $this->primaryKey('id');
-        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -43,7 +42,8 @@ class ArticlesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('title');
+            ->requirePresence('title', 'create')
+            ->notEmpty('title');
 
         $validator
             ->allowEmpty('body');
