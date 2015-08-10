@@ -12,21 +12,13 @@
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Title') ?></h6>
-            <p><?= h($article->title) ?></p>
+            <p><?= $article->title ?></p>
+            <h6 class="subheader"><?= __('Body') ?></h6>
+            <p><?= $article->body ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
             <p><?= $this->Number->format($article->id) ?></p>
-        </div>
-        <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('create') ?></h6>
-            <p><?= h($article->create) ?></p>
-        </div>
-    </div>
-    <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('Body') ?></h6>
-            <?= $this->Text->autoParagraph($article->body) ?>
         </div>
     </div>
 </div>
