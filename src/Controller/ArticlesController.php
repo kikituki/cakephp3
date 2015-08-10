@@ -11,15 +11,15 @@ use Cake\Log\Log;
  */
 class ArticlesController extends AppController
 {
-    public function initialize()
-    {
-        $loginUser = $this->request->session()->read('loginUser');
-        Log::write('debug', 'article:'.$loginUser);
-        if (empty($loginUser)) {
-            Log::write('debug', '未ログインエラー');
-            return $this->redirect(['action' => '../Error/index']);
-        }
-    }
+//    public function initialize()
+//    {
+//        $loginUser = $this->request->session()->read('loginUser');
+//        Log::write('debug', 'article:'.$loginUser);
+//        if (empty($loginUser)) {
+//            Log::write('debug', '未ログインエラー');
+//            return $this->redirect(['action' => '../Error/index']);
+//        }
+//    }
  
     /**
      * Index method
